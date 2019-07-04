@@ -14,11 +14,31 @@ class LinkedList {
   }
 
   // Insert first node
-  insertFist(data) {
+  insertFirst(data) {
     this.head = new Node(data, this.head);
+    this.size++;
   }
 
   // Insert last node
+  insertLast(data) {
+    let node = new Node(data);
+    let current;
+
+    // If empty, then make head
+    if (!this.head) {
+      this.head = node;
+    } else {
+      current = this.head;
+
+      while (current.next) {
+        current = current.next;
+      }
+
+      current.next = node;
+    }
+
+    this.size++;
+  }
 
   // Insert at index
 
@@ -40,8 +60,9 @@ class LinkedList {
 
 const ll = new LinkedList();
 
-ll.insertFist(100);
-ll.insertFist(200);
-ll.insertFist(300);
+ll.insertFirst(100);
+ll.insertFirst(200);
+ll.insertFirst(300);
+ll.insertLast(400);
 
 ll.printListData();

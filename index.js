@@ -89,6 +89,31 @@ class LinkedList {
   }
 
   // Remove at index
+  removeAt(index) {
+    // If index is out of range
+    if (index > 0 && index > this.size) {
+      return;
+    }
+
+    let current = this.head;
+    let previous;
+    let count = 0;
+
+    // Remove first
+    if (index === 0) {
+      this.head = current.next;
+    } else {
+      while (count < index) {
+        count++;
+        previous = current;
+        current = current.next;
+      }
+
+      previous.next = current.next;
+    }
+
+    this.size--;
+  }
 
   // Clear list
 
@@ -110,5 +135,6 @@ ll.insertFirst(300);
 ll.insertLast(400);
 ll.insertAt(500, 10);
 
-// ll.printListData();
-ll.getAt(2);
+ll.removeAt(3);
+ll.printListData();
+// ll.getAt(2);
